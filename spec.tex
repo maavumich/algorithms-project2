@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{MAAV Algorithms— Project 2}
+\author{Steven Schulte}
+\date{}
+
+\newcommand*\colvec[3][]{
+	\begin{pmatrix}\ifx\relax#1\relax\else#1\\\fi#2\\#3\end{pmatrix}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+In this project we will be focusing on the exciting world of probabilistic robotics. This project will be split into two parts, part A and part B. In part A, you will write a simple graphic display of the state of the vehicle over time. In part B, you will derive and implement an algorithm to predict the location of the vehicle at different points in time given "measurements" of the vechicle's state.
+
+\section{Setting the Scene}
+
+In this project, consider the following situation.
+
+Imagine a robot that exists in a 2D plane, starting at the origin, at the angle $0$. The robot can be commanded, and it takes commands as a vector with two values: $\colvec{\Delta s}{\Delta \theta}$
+
+For our purposes, we will imagine that the robot interprets these commands as "move forward $s$ meters, then turn $\theta$ radians."
+
+In theory, we should always know exactly where the robot is— but that would assume that the robot was capable of performing the requested actions perfectly. Unfortunately, this is not a realistic expectation in the real world. This is where the "probabilistic" part of probabilistic robotics comes in. The core concept of probabilistic robotics is to model the world not as known quantities, but as probability distributions. This allows the robot to have a more realistic view of the world. However, this approach is not without its problems. Often we must approximate probability distributions when we don't know them completely, which is one downfall of a probabilistic robotics approach, or have to use more processor-intensive algorithms. Still, we think the benefits outweigh the downsides.
+
+The next consideration we have to make is which probability distribution we should use. It's common to model the state of a vehicle with a multivariate Gaussian distribution, which we will do here as we also do that for the vehicle.
+
+We will model the robot's pose (which is its position and orientation) as a vector, $\vec{z}$, with three values: $\colvec[x]{y}{\theta}$. However, this column vector only accounts for the actual position, but as discussed, we wanted to track these values as a probability distribution. To do so, we will also have a 3 by 3 covariance matrix, $P$, that encodes the associated uncertainties of our state.
+
+Hopefully, understanding the state vector isn't too complex. But the covariance matrix is a much more difficult concept to understand. Part A will seek to illuminate the meaning of the covariance matrix, as well as prepare you to test your Part B program.
+
+\section{Part A}
+
+In this part of the project, we will develop a visualization for uncertain positions over time, and plot them so as to see visually the significance of $\vec{z}$ and $P$.
+
+\section{Part B}
+
+Let's start from the top. We get data from our ``sensors" that detail where we are.
+
+Hope you paid attention in calculus. 
+
+In this section we're going to derive the formula for the formula we'll be using for our prediction model. We'll start by establishing some definitions.
+
+\begin{description}
+	\item[$z_t$] {State vector, formatted as such: $\colvec[x]{y}{\theta}$}
+	\item[$u_t$] {Control input vector, formatted as such: $\colvec{\Delta s}{\Delta \theta}$}
+	\item[$P_t$] {Covariance matrix, formatted as such: $\begin{bmatrix}\sigma_{xx} & \sigma_{xy}\\\sigma_{yx} & \sigma_{yy}\end{bmatrix}$}
+	\item[$A$]   {The transformation matrix TODO}
+	\item[$f(x, u)$] {The function that predicts the state of the quadcopter given state and control input}
+	\item[$G_t$] {The TODO, formatted as such: $\begin{bmatrix}\theta_t{xy} & \theta\\test & test\end{bmatrix}$}
+	\item[$Q_t$] {I forget}
+\end{description}
+
+Now that we have the basics out of the way, let's dive into a brief explanation of the mathematics behind this algorithm.
+
+\end{document}
