@@ -17,7 +17,7 @@
 
 \section{Introduction}
 
-In this project we will be focusing on the exciting world of probabilistic robotics. This project will be split into two parts, part A and part B. In part A, you will write a simple graphic display of the state of the vehicle over time. In part B, you will derive and implement an algorithm to predict the location of the vehicle at different points in time given "measurements" of the vechicle's state.
+In this project we will be focusing on the exciting world of probabilistic robotics. This project will be split into two parts, part A and part B. In part A, you will write a simple graphic display of the state of the vehicle over time. In part B, you will derive and implement an algorithm to predict the location of the vehicle at different points in time given a series of commands sent to the vehicle.
 
 \section{Setting the Scene}
 
@@ -33,11 +33,13 @@ The next consideration we have to make is which probability distribution we shou
 
 We will model the robot's pose (which is its position and orientation) as a vector, $\vec{z}$, with three values: $\colvec[x]{y}{\theta}$. However, this column vector only accounts for the actual position, but as discussed, we wanted to track these values as a probability distribution. To do so, we will also have a 3 by 3 covariance matrix, $P$, that encodes the associated uncertainties of our state.
 
-Hopefully, understanding the state vector isn't too complex. But the covariance matrix is a much more difficult concept to understand. Part A will seek to illuminate the meaning of the covariance matrix, as well as prepare you to test your Part B program.
+Hopefully, understanding the mean vector isn't too complex. But the covariance matrix is a much more difficult concept to understand. Part A will seek to illuminate the meaning of the covariance matrix, as well as prepare you to test your Part B program.
 
 \section{Part A}
 
 In this part of the project, we will develop a visualization for uncertain positions over time, and plot them so as to see visually the significance of $\vec{z}$ and $P$.
+
+You will complete a program that takes a text file of input, formats it into a mean vector and a covariance matrix (this part is done for you) and graphically outputs a visual representation of the state (we will provide some code, but though we will explain the math, you will have to implement this part).
 
 \section{Part B}
 
